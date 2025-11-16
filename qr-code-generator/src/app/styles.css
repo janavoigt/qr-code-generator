@@ -1,0 +1,123 @@
+*{
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	min-height: 100vh;
+	background: linear-gradient(180deg, #DBEAFE, #ADD0FF);
+	gap: 32px;
+
+	.title-container {
+		position: relative;
+	
+		.page-title {
+			font-weight: 600;
+			text-align: center;
+			font-size: 32px;
+		}	
+	}	
+
+	.qr-code-container {
+		background-color: #F8FAFC;
+		padding: 12px;
+		border-radius: 12px;
+		display: flex;
+		gap: 12px;
+		width: 700px;
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+		.qr-code, .qr-code-customization {
+			background-color: #FFFFFF;
+			padding: 18px;
+			border-radius: 12px;
+			width: 50%;
+		}
+
+		.qr-code {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+
+			.link-input {
+				display: flex;
+				flex-direction: column;
+				gap: 4px;
+
+				label {
+					font-weight: 600;
+					font-size: 16px;
+				}
+
+				input {
+					padding: 10px;
+					border-radius: 8px;
+					border: solid 1px #E2E8F0;
+
+					&:focus {
+						outline: 1px solid #4F46E5;
+					}
+				}
+			}
+			.qr-code-preview {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 12px;
+			}
+		}
+		
+		.qr-code-customization {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			.customization-container {
+				display: flex;
+				flex-direction: column;
+				gap: 4px;
+
+				.input-container {
+					display: flex;
+					flex-direction: column;
+					gap: 12px;
+
+				}
+
+				.input-container.colors {
+					flex-direction: row;
+					gap: 32px;
+
+					.input-color {
+						border: none;
+						background-color: transparent;
+						height: 30px;
+						width: 100%;
+						cursor: pointer;
+					}
+				}
+			}
+
+			.download-button {
+				background-color: #4F46E5;
+				color: #ffffff;
+				padding: 12px 24px;
+				border-radius: 8px;
+				font-weight: 600;
+				border: none;
+				cursor: pointer;
+				transition: background-color 0.2s;
+
+				&:hover {
+					background-color: #4338ca;
+				}
+			}
+		}
+	}
+}
