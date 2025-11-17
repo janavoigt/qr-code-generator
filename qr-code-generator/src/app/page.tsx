@@ -1,5 +1,6 @@
 "use client"
 
+import { useRef, useState } from "react";
 import Button from "./components/Button";
 import Input from "./components/Input";
 import Select from "./components/Select";
@@ -9,10 +10,38 @@ import { FaUpload } from "react-icons/fa";
 
 export default function Home() {
 
+	const [linkValue, setLinkValue] = useState<string>('')
+	const [fgColor, setFgColor] = useState<string>("#000000")
+	const [bgColor, setBgColor] = useState<string>("#ffffff")
+	const [logoUrl, setLogoUrl] = useState<string>("/arrow.svg")
+	const [logoSize, setLogoSize] = useState<number>(24)
+	const qrCodeRef = useRef<HTMLDivElement>(null)
+
+
+	function handleLogoChange(e: React.ChangeEvent<HTMLInputElement>){
+		const file = e.target.files?.[0]
+		 if (!file) return;
+
+		const reader = new FileReader();
+		reader.onload = () => setLogoUrl(reader.result as string);
+  		reader.readAsDataURL(file);
+	}
+
+	function handleDownload(){
+		if (!qrCodeRef.current) return;
+
+		const canvas = qrCodeRef.current.querySelector("canvas")
+		if (!canvas) return
+
+		const link = document.createElement("a")
+		link.href = canvas.toDataURL("image/png")
+		link.download = 'qrcode.png'
+		link.click();
+	}
 	
 	return (
 	<main className="container">
-		<Title title="Gere o seu QR Code e customize como quiser"/>
+		<Title title="Gere e customize o seu QR Code"/>
 
 		<section className="qr-code-container">
 			<div className="qr-code">
@@ -22,27 +51,32 @@ export default function Home() {
 				classNameLabel="link-input"
 				placeholder="Seu Link aqui"
 				type="link"
-				required />
+				required
+				value={linkValue}
+				onChange={(e) => setLinkValue(e.target.value)} />
 
 				<div className="qr-code-preview">
 					<p>QR Code Preview</p>
 
-					<QRCodeCanvas
-						value={"https://github.com/janavoigt"}
-						title={"https://github.com/janavoigt"}
+					<div ref={qrCodeRef}>
+						<QRCodeCanvas
+						value={linkValue}
+						title={linkValue}
 						size={200}
-						bgColor={"#ffffff"}
-						fgColor={"#000000"}
+						bgColor={bgColor}
+						fgColor={fgColor}
 						imageSettings={{
-							src: "https://static.zpao.com/favicon.png",
+							src: logoUrl,
 							x: undefined,
 							y: undefined,
-							height: 24,
-							width: 24,
+							height: logoSize,
+							width: logoSize,
 							opacity: 1,
 							excavate: true,
+							crossOrigin: 'anonymous'
 						}}
 					/>
+					</div>
 				</div>
 			</div>
 
@@ -57,17 +91,21 @@ export default function Home() {
 						label="Cor principal"
 						labelFor="fgColor"
 						classNameLabel="input-box"
-						id="fgColor"
+						id={fgColor}
+						type="color"
 						className="input-color"
-						type="color"/>
+						value={fgColor}
+						onChange={(e) => setFgColor(e.target.value)}/>
 
 						<Input 
 						label="Cor do fundo"
 						labelFor="bgColor"
 						classNameLabel="input-box"
-						id="bgColor"
+						id={bgColor}
+						type="color"
 						className="input-color"
-						type="color"/>
+						value={bgColor}
+						onChange={(e) => setBgColor(e.target.value)}/>
 						
 					</div>
 				</div>
@@ -84,6 +122,7 @@ export default function Home() {
 						className="input-file"
 						type="file"
 						accept="image/*"
+						onChange={handleLogoChange}
 						/>
 
 						<Button className="input-file-button">
@@ -101,11 +140,13 @@ export default function Home() {
 								{ value: 38, label: "38px x 38px" },
 								{ value: 50, label: "50px x 50px" },
 							]}
+							value={logoSize}
+							onChange={(e) => setLogoSize(Number(e.target.value))}
 						/>
 					</div>
 				</div>
 
-				<Button className="download-button">Baixar QR Code</Button>
+				<Button className="download-button" onClick={handleDownload}>Baixar QR Code</Button>
 			</div>
 		</section>	
 		
