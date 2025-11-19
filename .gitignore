@@ -1,0 +1,45 @@
+# Dependencies
+/node_modules
+
+# Output
+/.next
+/out
+.next/
+out/
+
+# Build
+/build
+
+# Production
+/.vercel
+
+# Environment variables
+.env
+.env.*.local
+*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs
+*.log
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# TypeScript
+*.tsbuildinfo
+
+# Local development
+/.turbo
+
