@@ -41,15 +41,15 @@ export default function Home() {
 	
 	return (
 	<main className="container">
-		<Title title="Gere e customize o seu QR Code"/>
+		<Title title="Generate and customize your QR Code"/>
 
 		<section className="qr-code-container">
 			<div className="qr-code">
 				<Input 
-				label="Digite o seu Link:"
+				label="Enter your link:"
 				labelFor="link"
 				classNameLabel="link-input"
-				placeholder="Seu Link aqui"
+				placeholder="Link here"
 				type="link"
 				required
 				value={linkValue}
@@ -84,11 +84,11 @@ export default function Home() {
 
 			<div className="qr-code-customization">
 				<div className="customization-container">
-					<h3>Cores</h3>
+					<h3>Colors</h3>
 
 					<div className="input-container colors">
 						<Input 
-						label="Cor principal"
+						label="Primary color"
 						labelFor="fgColor"
 						classNameLabel="input-box"
 						id={fgColor}
@@ -98,7 +98,7 @@ export default function Home() {
 						onChange={(e) => setFgColor(e.target.value)}/>
 
 						<Input 
-						label="Cor do fundo"
+						label="Background color"
 						labelFor="bgColor"
 						classNameLabel="input-box"
 						id={bgColor}
@@ -115,7 +115,7 @@ export default function Home() {
 
 					<div className="input-container">
 						<Input 
-						label="Insira a sua logo"
+						label="Insert your logo"
 						labelFor="logo"
 						classNameLabel="input-box"
 						id="logo"
@@ -127,11 +127,11 @@ export default function Home() {
 
 						<Button className="input-file-button">
 							<FaUpload />
-							Escolher arquivo
+							Choose file
 						</Button>
 
 						<Select 
-							label="Tamanho da logo"
+							label="Logo size"
 							className="input-box"
 							id="logoSize"
 							name="logo"
@@ -146,7 +146,7 @@ export default function Home() {
 					</div>
 				</div>
 
-				<Button className="download-button" onClick={handleDownload}>Baixar QR Code</Button>
+				<Button className="download-button" onClick={handleDownload}>Download QR Code</Button>
 			</div>
 		</section>	
 		
