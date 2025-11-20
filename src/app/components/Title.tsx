@@ -1,11 +1,13 @@
 interface TitleProps {
     title: string
+    classNameSection: string
+    className: string
 }
 
-export default function Title({ title } : TitleProps) {
+export default function Title({ title, classNameSection, className  } : TitleProps) {
     return(
-        <section className="title-container">
-            <h1 className="page-title"> {title} </h1>
+        <section className={classNameSection}>
+            <h1 className={className}> {title} </h1>
         </section>  
         
     )

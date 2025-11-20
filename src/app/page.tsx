@@ -13,7 +13,7 @@ export default function Home() {
 	const [linkValue, setLinkValue] = useState<string>('')
 	const [fgColor, setFgColor] = useState<string>("#000000")
 	const [bgColor, setBgColor] = useState<string>("#ffffff")
-	const [logoUrl, setLogoUrl] = useState<string>("/arrow.svg")
+	const [logoUrl, setLogoUrl] = useState<string>("/star.svg")
 	const [logoSize, setLogoSize] = useState<number>(24)
 	const qrCodeRef = useRef<HTMLDivElement>(null)
 
@@ -41,7 +41,7 @@ export default function Home() {
 	
 	return (
 	<main className="container">
-		<Title title="Generate and customize your QR Code"/>
+		<Title title="Generate and customize your QR Code" classNameSection="title-container" className="page-title"/>
 
 		<section className="qr-code-container">
 			<div className="qr-code">
@@ -49,7 +49,7 @@ export default function Home() {
 				label="Enter your link:"
 				labelFor="link"
 				classNameLabel="link-input"
-				placeholder="Link here"
+				placeholder="exemplo@exemplo"
 				type="link"
 				required
 				value={linkValue}
