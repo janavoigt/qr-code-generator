@@ -49,7 +49,7 @@ export default function Home() {
 				label="Enter your link:"
 				labelFor="link"
 				classNameLabel="link-input"
-				placeholder="exemplo@exemplo"
+				placeholder="Enter your link here"
 				type="link"
 				required
 				value={linkValue}
