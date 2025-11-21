@@ -28,7 +28,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 View the project online at: https://qr-code-generator-eight-pi.vercel.app/
 
 
-## Deploy on Vercel
+## Technologies
 
 - Next.js – React framework
 - Jest – JavaScript testing framework
